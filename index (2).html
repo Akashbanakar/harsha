@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsha Gowda P | Portfolio</title>
+    <style>
+        :root {
+            --primary: #0070f3;
+            --secondary: #1f2937;
+            --accent: #f59e0b;
+            --bg: #f9fafb;
+            --surface: #ffffff;
+            --text: #111827;
+            --text-muted: #6b7280;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--surface);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: none;
+            box-shadow: none;
+            padding: 1rem 0;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0070f3;
+        }
+
+        /* Profile placeholder layout based on pdf layout styling */
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2b92ea, #055099);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .info-card, .objective-card {
+            background: #f3f4f6;
+            padding: 1.2rem;
+            border-radius: 8px;
+        }
+
+        .objective-card {
+            grid-column: 1 / -1;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Skills tags */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: #eff6ff;
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid #dbeafe;
+        }
+
+        /* Dashboard & Tables */
+        .dashboard-metric {
+            display: inline-block;
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border: 1px solid #fde68a;
+        }
+
+        .metric-val {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d97706;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background-color: #f3f4f6;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .gpa-box {
+            background: #ecfdf5;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-img-placeholder {
+            height: 180px;
+            background-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .solar-bg { background: linear-gradient(to bottom right, #f59e0b, #b45309); color: white; }
+        .emf-bg { background: linear-gradient(to bottom right, #10b981, #065f46); color: white; }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        /* Certifications List */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Contact Form */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--secondary);
+            color: white;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .avatar-container {
+                margin: 0 auto;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Harsha Gowda P</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#academic">Academics</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <p style="color: var(--accent); font-weight: bold; margin-bottom: 0;">HELLO, I'M</p>
+                <h1>Harsha Gowda P</h1>
+                <div class="subtitle">Electronics & Communication Engineering Student</div>
+                <p>Passionate ECE student interested in Embedded Systems, Arduino Development, Renewable Energy Systems, IoT and emerging technologies.</p>
+                <a href="#contact" style="display: inline-block; background: var(--secondary); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-weight: 500;">Explore Portfolio</a>
+            </div>
+            <div class="avatar-container">
+                <div class="avatar-placeholder">HG</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Personal Information & Objective</h2>
+            <div class="info-grid">
+                <div class="objective-card">
+                    <strong>Career Objective:</strong>
+                    <p style="margin-top: 0.5rem;">To become a successful Electronics Engineer with expertise in Embedded Systems, Renewable Energy and IoT technologies while contributing innovative engineering solutions to society.</p>
+                </div>
+                <div class="info-card">
+                    <strong>USN:</strong> IBI25EC048<br>
+                    <strong>Semester:</strong> 2nd Semester<br>
+                    <strong>Department:</strong> Electronics & Communication Engineering
+                </div>
+                <div class="info-card">
+                    <strong>College:</strong> Bangalore Institute of Technology<br>
+                    <strong>Email:</strong> harsgagowda@gmail.com<br>
+                    <strong>Phone:</strong> 9008999021
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill-tag">Arduino Programming</div>
+                <div class="skill-tag">Embedded Systems C Programming</div>
+                <div class="skill-tag">Python Basics</div>
+                <div class="skill-tag">IoT Fundamentals</div>
+                <div class="skill-tag">Solar Energy Systems</div>
+            </div>
+        </section>
+
+        <section id="academic">
+            <h2>Attendance & Academic Dashboard</h2>
+            
+            <div class="dashboard-metric">
+                <div class="metric-val">85%</div>
+                <strong>Overall Attendance</strong><br>
+                <span style="color: var(--text-muted); font-size: 0.9rem;">(96 Attended / 110 Total Classes)</span>
+            </div>
+
+            <h3>Attendance Breakup</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Code</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fundamentals of Electronics & Communication Engineering</td>
+                        <td>1BECE205</td>
+                        <td>81.48%</td>
+                    </tr>
+                    <tr>
+                        <td>Essentials of Information Technology</td>
+                        <td>IBESC204E</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics II</td>
+                        <td>IBMATE201</td>
+                        <td>78.26%</td>
+                    </tr>
+                    <tr>
+                        <td>Quantum Physics & Electronic Sensors</td>
+                        <td>1BPHEC202</td>
+                        <td>80%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Academic Performance (2nd Semester)</h3>
+            <div class="gpa-box">
+                Current CGPA: 8.50 &nbsp;|&nbsp; Total Credits: 20
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Code</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mathematics II</td>
+                        <td>IBMATE201</td>
+                        <td>4</td>
+                        <td><strong>A</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Quantum Physics & Electronic Sensors</td>
+                        <td>1BPHEC202</td>
+                        <td>4</td>
+                        <td><strong>A</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Essentials of Information Technology</td>
+                        <td>1BESC204E</td>
+                        <td>4</td>
+                        <td><strong>O</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Fundamentals of Electronics & Communication Engineering</td>
+                        <td>1BECE205</td>
+                        <td>4</td>
+                        <td><strong>A</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-img-placeholder solar-bg">
+                        <div style="text-align: center; padding: 1rem;">
+                            <strong style="font-size: 1.25rem;">Solar PV System</strong>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Solar PV System Monitoring</h3>
+                        <p>A photovoltaic energy system that converts solar energy into electrical energy and supplies power efficiently through an inverter.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-placeholder emf-bg">
+                        <div style="text-align: center; padding: 1rem;">
+                            <strong style="font-size: 1.25rem;">EMF Detector</strong>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Electromagnetic Field Detector</h3>
+                        <p>Arduino based EMF detector capable of sensing nearby electromagnetic fields using LEDs and sensors.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Achievements & Certifications</h2>
+            <div class="info-grid">
+                <div>
+                    <h3>Certifications</h3>
+                    <ul class="cert-list" style="margin-top: 0.5rem;">
+                        <li>IBM AI Certification</li>
+                        <li>Microsoft EY AI Certification</li>
+                        <li>C Programming Certification</li>
+                        <li>Python Programming Certification</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Recognition & Activities</h3>
+                    <ul class="cert-list" style="margin-top: 0.5rem;">
+                        <li>Institute Momento Winner</li>
+                        <li>Walkathon Participation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-wrapper">
+                <div>
+                    <p style="margin-bottom: 1rem;">Feel free to reach out for collaborations, project discussions, or professional inquiries.</p>
+                    <strong>Location:</strong><br>
+                    Bangalore Institute of Technology<br><br>
+                    <strong>Phone:</strong><br>
+                    9008999021<br><br>
+                    <strong>Email:</strong><br>
+                    harsgagowda@gmail.com
+                </div>
+                <div>
+                    <form onsubmit="event.preventDefault(); alert('Message sent simulated!');">
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="4" required placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Harsha Gowda P | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
